@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='main.css')}} ">
     <title>blog post</title>
 </head>
@@ -18,8 +18,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {%if current_user.is_authenticated%}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('account')}}">Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('post')}}">New Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+            </li>
+            {%else%}
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+
                     <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -32,6 +45,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
+            {%endif%}
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

@@ -1,0 +1,57 @@
+{% extends "index.html" %} {% block content %} {% for post in posts %}
+<div class="container py-5">
+    <!-- For Demo Purpose -->
+    <header class="text-center text-white">
+        <h1 class="display-4">Bootstrap breadcrumbs</h1>
+        <p class="lead mb-0">Some Bootstrap 4 breadcrumb variants with different dividers.</p>
+        <p class="font-italic">Snippet by
+            <a href="https://bootstrapious.com" class="text-white">
+                <u>Bootstrapious</u></a>
+        </p>
+    </header>
+
+    <div class="py-5">
+        <div class="row">
+            <div class="col-lg-9 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-body shadow-sm p-5">
+                        <!-- Default breadcrumb-->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="text-uppercase">{{post.author.username}}</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="t">posted on {{post.date_posted.strftime('%Y-%M-%D')}}</a>
+                                </li>
+                            </ol>
+                        </nav>
+                        <h5 class=" text-muted ">{{post.title}}</h5>
+                        <p class="font-italic text-muted ">{{post.content}}</p>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4 ">
+                    <div class="card-body shadow-sm p-5 ">
+                        <!-- Arrow breadcrumb-->
+                        <nav aria-label="breadcrumb ">
+                            <ol class="breadcrumb breadcrumb-bullet ">
+                                <li class="breadcrumb-item ">
+                                    <a href="# " class="text-uppercase ">{{post.author.username}}</a>
+                                </li>
+
+                                <li aria-current="page " class="breadcrumb-item active text-uppercase "> posted on {{post.date_posted.strftime('%Y-%M-%D')}}</li>
+                            </ol>
+                        </nav>
+                        <h5 class="text-muted ">{{post.title}}</h5>
+                        <p class="font-italic text-muted ">{{post.content}}</p>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>{% endfor %} {% endblock content %}
